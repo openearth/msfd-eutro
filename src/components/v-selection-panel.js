@@ -1,7 +1,8 @@
 import {
   bus
 } from '@/event-bus.js'
-
+import noUiSlider from 'noUiSlider'
+import wNumb from 'wNumb'
 // TODO: Fix this by looping over datasets in this.layers. This is an ugly fix
 
 export default {
@@ -39,7 +40,32 @@ export default {
     }
   },
   mounted () {
-    bus.$on('map-loaded', (event) => {})
+    bus.$on('map-loaded', (event) => {
+      var slider = document.getElementById('slider-color')
+      noUiSlider.create(slider, {
+        start: [2.5, 5, 7.5],
+        connect: [true, true, true, true],
+        range: {
+          'min': [0],
+          'max': [10]
+        },
+        step: 0.1,
+        pips: {
+          mode: 'values',
+          values: [0, 2.5, 5, 7.5, 10],
+          density: 4,
+          format: wNumb({ decimals: 2 })
+        },
+        cssPrefix: 'noUi-',
+        tooltips: [true, true, true]
+      })
+      var connect = slider.querySelectorAll('.noUi-connect')
+      var classes = ['c-1-color', 'c-2-color', 'c-3-color', 'c-4-color']
+
+      for (var i = 0; i < connect.length; i++) {
+        connect[i].classList.add(classes[i])
+      }
+    })
   },
   methods: {},
   components: {}

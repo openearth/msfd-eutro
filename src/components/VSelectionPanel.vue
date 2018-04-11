@@ -9,14 +9,16 @@
     <v-card>
       <v-card-text>
         Select period: {{periodText}}
-          <v-flex xs4>
-            <v-select :items="items" v-model="selectPeriod" label="Select" single-line></v-select>
-          </v-flex>
+        <v-flex xs4>
+          <v-select :items="items" v-model="selectPeriod" label="Select" single-line></v-select>
+        </v-flex>
         <v-slider v-if="selectPeriod==='yearly'" :min="2004" :max="2017" v-model="period" thumb-label step="1" ticks></v-slider>
         <v-slider v-if="selectPeriod==='6-yearly'" :min="2004" :max="2017" v-model="period" thumb-label step="6" ticks></v-slider>
         <v-radio-group v-model="radioGroup">
           <v-radio v-for="n in modes" :key="n" :label="`${n}`" :value="n"></v-radio>
         </v-radio-group>
+        <div id='slider-color'>
+        </div>
       </v-card-text>
     </v-card>
   </v-list>
@@ -41,4 +43,18 @@
   max-height: 50vh;
   overflow-y: auto;
 }
+
+.slider-color {
+  height: 50px !important;
+  width: 80%;
+  margin: 10%;
+}
+
+.noUi-handle {
+  width: 10px !important;
+}
+.c-1-color { background: red; }
+.c-2-color { background: yellow; }
+.c-3-color { background: green; }
+.c-4-color { background: blue; }
 </style>

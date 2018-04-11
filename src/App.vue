@@ -5,7 +5,7 @@
   </v-navigation-drawer>
   <v-toolbar xs6 color="grey lighten-4" fixed app>
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-    <v-toolbar-title>CMEMS viewer</v-toolbar-title>
+    <v-toolbar-title>MSFD Eurto - Interactive web-mapping of chlorophyll indicator maps</v-toolbar-title>
   </v-toolbar>
   <v-content>
     <div id="map">
@@ -23,6 +23,8 @@
 <style >
 @import 'mapbox-gl/dist/mapbox-gl.css';
 @import 'material-design-icons/iconfont/material-icons.css';
+@import 'nouislider/distribute/nouislider.min.css';
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
@@ -30,5 +32,17 @@
 #map {
   height: 100vh;
   width: 100vw;
+}
+.noUi-handle {
+  width: 10px !important;
+  right: -5px !important;
+  left: 100% -5px !important;
+}
+:before{
+  display: none !important;
+}
+
+:after{
+  display: none !important;
 }
 </style>
