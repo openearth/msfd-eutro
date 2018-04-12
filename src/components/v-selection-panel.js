@@ -25,11 +25,17 @@ export default {
         '6-yearly'
       ],
       selectPeriod: 'yearly',
-      radioGroup: null,
+      radioGroup: 'Original mean',
       modes: ['Original mean', 'Classified mean', 'Original P90', 'Classified P90']
     }
   },
   watch: {
+    selectPeriod: {
+      handler: function (selectPeriod) {
+        this.updateTimeSlider()
+      },
+      deep: true
+    },
     layers: {
       handler: function (period) {
         if (this.selectPeriod === 'yearly') {
@@ -41,6 +47,50 @@ export default {
   },
   mounted () {
     bus.$on('map-loaded', (event) => {
+      this.createColorSlider()
+      this.createTimeSlider()
+    })
+  },
+  methods: {
+    updateTimeSlider () {
+      if (this.selectPeriod === '6-yearly') {
+        var margin = 6
+        var limit = 6
+        var range = {
+          'min': 2002,
+          'max': 2023
+        }
+      } else if (this.selectPeriod === 'yearly') {
+        margin = 1
+        limit = 1
+        range = {
+          'min': 2002,
+          'max': 2017
+        }
+      }
+      this.timeslider.updateOptions({
+        margin: margin,
+        limit: limit,
+        range: range
+      })
+    },
+    createTimeSlider () {
+      var timeslider = document.getElementById('slider-time')
+      this.timeslider = noUiSlider.create(timeslider, {
+        start: [2002, 2008],
+        step: 1,
+        margin: 1,
+        limit: 1,
+        behaviour: 'drag-fixed',
+        connect: true,
+        range: {
+          'min': 2002,
+          'max': 2017
+        },
+        tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })]
+      })
+    },
+    createColorSlider () {
       var slider = document.getElementById('slider-color')
       noUiSlider.create(slider, {
         start: [2.5, 5, 7.5],
@@ -54,10 +104,12 @@ export default {
           mode: 'values',
           values: [0, 2.5, 5, 7.5, 10],
           density: 4,
-          format: wNumb({ decimals: 2 })
+          format: wNumb({
+            decimals: 2
+          })
         },
         cssPrefix: 'noUi-',
-        tooltips: [true, true, true]
+        tooltips: [wNumb({ decimals: 1 }), wNumb({ decimals: 1 }), wNumb({ decimals: 1 })]
       })
       var connect = slider.querySelectorAll('.noUi-connect')
       var classes = ['c-1-color', 'c-2-color', 'c-3-color', 'c-4-color']
@@ -65,8 +117,7 @@ export default {
       for (var i = 0; i < connect.length; i++) {
         connect[i].classList.add(classes[i])
       }
-    })
+    }
   },
-  methods: {},
   components: {}
 }

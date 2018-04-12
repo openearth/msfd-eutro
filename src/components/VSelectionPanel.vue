@@ -7,13 +7,18 @@
   </v-toolbar>
   <v-list dense pt-0 three-line>
     <v-card>
+
       <v-card-text>
-        Select period: {{periodText}}
+        <v-layout row wrap>
+          <v-flex xs4>
+            Select period:
+          </v-flex>
         <v-flex xs4>
-          <v-select :items="items" v-model="selectPeriod" label="Select" single-line></v-select>
+          <v-select id="select-period" :items="items" v-model="selectPeriod" label="Select" single-line></v-select>
         </v-flex>
-        <v-slider v-if="selectPeriod==='yearly'" :min="2004" :max="2017" v-model="period" thumb-label step="1" ticks></v-slider>
-        <v-slider v-if="selectPeriod==='6-yearly'" :min="2004" :max="2017" v-model="period" thumb-label step="6" ticks></v-slider>
+      </v-layout>
+        <div id='slider-time'>
+        </div>
         <v-radio-group v-model="radioGroup">
           <v-radio v-for="n in modes" :key="n" :label="`${n}`" :value="n"></v-radio>
         </v-radio-group>
@@ -27,7 +32,11 @@
 
 <script src="./v-selection-panel.js"></script>
 
-<style scoped>
+<style>
+.input-group {
+  padding-top: 0px !important;
+}
+
 #selection {
   padding: 0px;
   width: 100%;
@@ -44,10 +53,9 @@
   overflow-y: auto;
 }
 
-.slider-color {
-  height: 50px !important;
-  width: 80%;
-  margin: 10%;
+#slider-color, #slider-time {
+  margin-top: 30px !important;
+  margin-bottom: 40px !important;
 }
 
 .noUi-handle {

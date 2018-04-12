@@ -16,6 +16,7 @@
   "dependencies": {
     "css-loader": "^0.28.10",
     "jquery": "^3.3.1",
+    "jsdap": "^8.1.0",
     "lodash": "^4.17.5",
     "mapbox-gl": "^0.44.1",
     "material-icon": "^0.1.4",
