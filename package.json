@@ -1,7 +1,7 @@
 {
-  "name": "cmems-viewer",
+  "name": "msfd-eutro",
   "version": "1.0.0",
-  "description": "Viewer for the CMEMS data",
+  "description": "Viewer for the msfd-eutro data",
   "author": "CindyvdVries <cindyvdvries@gmail.com>",
   "private": true,
   "scripts": {
@@ -11,10 +11,12 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit test/e2e/specs",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "css-loader": "^0.28.10",
+    "gh-pages": "^1.1.0",
     "jquery": "^3.3.1",
     "jsdap": "^8.1.0",
     "lodash": "^4.17.5",
