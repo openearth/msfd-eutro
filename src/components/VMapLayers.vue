@@ -5,4 +5,10 @@
 
 <script src="./v-map-layers.js"></script>
 
-<style></style>
+<style>
+#popup {
+  height: 370px;
+  width: 500px;
+}
+
+</style>
