@@ -1,38 +1,71 @@
 const mapLayers = [
-  // {
-  //   layertype: 'mapbox-layer',
-  //   name: 'Combined exposure',
-  //   textcolor: 'rgba(199, 23, 220, 1)',
-  //   data: [{
-  //     id: 'combined-exposure',
-  //     layout: {
-  //       'visibility': 'visible'
-  //     },
-  //     type: 'raster',
-  //     source: {
-  //       type: 'raster',
-  //       url: 'mapbox://camvdvries.a3b2by3z'
-  //     },
-  //     'source-layer': 'CHL_1km_2017_mean_epsg4326-3l2pqi',
-  //     'paint': {}
-  //   }]
-  // }
   {
-    layertype: 'mapbox-layer',
-    name: 'Combined exposure',
-    textcolor: 'rgba(199, 23, 220, 1)',
-    data: [{
-      id: 'combined-exposure',
-      layout: {
-        'visibility': 'visible'
-      },
-      'type': 'raster',
-      source: {
-        type: 'raster',
-        tiles: ['http://tl-tc102.xtr.deltares.nl:8080/thredds/wms/Thredds/yearly/CHL_1km_2017.nc?service=WMS&request=GetMap&version=1.3.0&layers=mean_chlorophyll&crs=EPSG:3857&bbox={bbox-epsg-3857}&width=256&height=256&styles=boxfill/redblue&format=image/png&COLORSCALERANGE=0,80&BELOWMINCOLOR=transparent&ABOVEMAXCOLOR=transparent&NUMCOLORBANDS=3'],
-        'tileSize': 256
-      }
-    }]
+    'id': 'ospar-eu-6iavvw',
+    'type': 'line',
+    'source': {
+      'url': 'mapbox://mariekeeleveld.410g4lyk',
+      'type': 'vector'
+    },
+    'source-layer': 'ospar_eu-6iavvw',
+    'filter': [
+      '==',
+      '$type',
+      'LineString'
+    ],
+    'layout': {
+      'visibility': 'visible'
+    },
+    'paint': {
+      'line-dasharray': [
+        2,
+        2
+      ],
+      'line-gap-width': 0,
+      'line-color': '#000000'
+    }
+  },
+  {
+    'id': 'ospar-nl-c0abqr',
+    'type': 'line',
+    'source': {
+      'url': 'mapbox://mariekeeleveld.cfz5dxdk',
+      'type': 'vector'
+    },
+    'source-layer': 'ospar_nl-c0abqr',
+    'filter': [
+      '==',
+      '$type',
+      'Polygon'
+    ],
+    'layout': {
+      'visibility': 'visible'
+    },
+    'paint': {
+      'line-dasharray': [
+        1,
+        1
+      ]
+    }
+  },
+  {
+    'id': 'mwtl-nl-7c3j4z',
+    'type': 'circle',
+    'source': {
+      'url': 'mapbox://mariekeeleveld.53vxfur6',
+      'type': 'vector'
+    },
+    'source-layer': 'mwtl_nl-7c3j4z',
+    'filter': [
+      '==',
+      '$type',
+      'Point'
+    ],
+    'layout': {
+      'visibility': 'visible'
+    },
+    'paint': {
+      'circle-color': 'hsla(0, 0%, 0%, 0.32)'
+    }
   }
 ]
 
