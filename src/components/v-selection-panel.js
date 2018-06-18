@@ -38,6 +38,7 @@ export default {
       handler: function (selectPeriod) {
         bus.$emit('change-selectPeriod', this.selectPeriod)
         this.updateTimeSlider()
+        this.updatePaint()
       },
       deep: true
     },
@@ -45,6 +46,7 @@ export default {
       handler: function (parameter) {
         bus.$emit('change-parameter', this.parameter)
         this.updatePaint()
+<<<<<<< HEAD
       },
       deep: true
     },
@@ -61,6 +63,17 @@ export default {
       },
       deep: true
     }
+=======
+      },
+      deep: true
+    },
+    value: {
+      handler: function (value) {
+        this.updatePaint()
+      },
+      deep: true
+    },
+>>>>>>> refs/remotes/origin/master
     // shapelayer: {
     //   handler: function (shapelayer) {
     //     if (shapelayer === true) {

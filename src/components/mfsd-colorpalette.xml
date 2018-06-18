@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<FeatureTypeStyle>
+  <Rule>
+    <RasterSymbolizer>
+      <ColorMap>
+        <ColorMapEntry color="#FF69B4" quantity="0" />
+        <ColorMapEntry color=" #800080" quantity="80" />
+      </ColorMap>
+    </RasterSymbolizer>
+  </Rule>
+</FeatureTypeStyle>
