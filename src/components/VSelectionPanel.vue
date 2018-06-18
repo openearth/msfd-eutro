@@ -69,19 +69,19 @@
 }
 
 .c-1-color {
-  background: red;
+  background: #33cc33;
 }
 
 .c-2-color {
-  background: yellow;
+  background: #ffff00;
 }
 
 .c-3-color {
-  background: green;
+  background: #ff9900;
 }
 
 .c-4-color {
-  background: blue;
+  background: #990000;
 }
 
 #colorbar {

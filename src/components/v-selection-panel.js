@@ -46,6 +46,7 @@ export default {
       handler: function (parameter) {
         bus.$emit('change-parameter', this.parameter)
         this.updatePaint()
+<<<<<<< HEAD
       },
       deep: true
     },
@@ -55,6 +56,24 @@ export default {
       },
       deep: true
     },
+    layers: {
+      handler: function (layers) {
+        this.layers = layers
+        this.updatePaint()
+      },
+      deep: true
+    }
+=======
+      },
+      deep: true
+    },
+    value: {
+      handler: function (value) {
+        this.updatePaint()
+      },
+      deep: true
+    },
+>>>>>>> refs/remotes/origin/master
     // shapelayer: {
     //   handler: function (shapelayer) {
     //     if (shapelayer === true) {
@@ -68,6 +87,7 @@ export default {
   },
   mounted () {
     bus.$on('map-loaded', (event) => {
+      console.log('hoi')
       this.createColorSlider()
       this.createTimeSlider()
       bus.$emit('change-selectPeriod', this.selectPeriod)
@@ -97,10 +117,11 @@ export default {
         range: range
       })
     },
+
     createTimeSlider () {
       var timeslider = document.getElementById('slider-time')
       this.timeslider = noUiSlider.create(timeslider, {
-        start: [2002, 2008],
+        start: [2002, 2007],
         step: 1,
         margin: 1,
         limit: 1,
@@ -114,21 +135,26 @@ export default {
       })
       this.timeslider.on('slide.one', (val) => {
         this.value = val
+        bus.$emit('change-time-slider', val)
       })
+      this.updatePaint()
     },
+
     createColorSlider () {
       var slider = document.getElementById('slider-color')
-      noUiSlider.create(slider, {
-        start: [2.5, 5, 7.5],
+      var colorSlider = noUiSlider.create(slider, {
+        start: [20, 40, 60],
         connect: [true, true, true, true],
         range: {
           'min': [0],
-          'max': [10]
+          'max': [80]
         },
-        step: 0.1,
+        step: 5,
+        margin: 5,
+        padding: 5,
         pips: {
           mode: 'values',
-          values: [0, 2.5, 5, 7.5, 10],
+          values: [0, 20, 40, 60, 80],
           density: 4,
           format: wNumb({
             decimals: 2
@@ -137,12 +163,18 @@ export default {
         cssPrefix: 'noUi-',
         tooltips: [wNumb({ decimals: 1 }), wNumb({ decimals: 1 }), wNumb({ decimals: 1 })]
       })
+      bus.$emit('create-color-slider', colorSlider)
+
       var connect = slider.querySelectorAll('.noUi-connect')
       var classes = ['c-1-color', 'c-2-color', 'c-3-color', 'c-4-color']
 
       for (var i = 0; i < connect.length; i++) {
         connect[i].classList.add(classes[i])
       }
+      colorSlider.on('slide.one', (val) => {
+        bus.$emit('create-color-slider', colorSlider)
+        // this.updatePaint()
+      })
     },
     updatePaint () {
       var begin = parseInt(parseInt(this.value['0']))
@@ -150,8 +182,8 @@ export default {
         this.map.setPaintProperty(layer.id, 'raster-opacity', 0)
         if (layer.id === begin.toString() && this.selectPeriod === 'yearly') {
           this.map.setPaintProperty(begin.toString(), 'raster-opacity', 1)
-        } else if (layer.id === begin.toString() && this.selectPeriod === 'yearly') {
-          this.map.setPaintProperty(begin.toString() + '_' + (begin + 6).toString(), 'raster-opacity', 1)
+        } else if (layer.id === begin.toString() + '_' + (begin + 5).toString() && this.selectPeriod === 'six_yearly') {
+          this.map.setPaintProperty(begin.toString() + '_' + (begin + 5).toString(), 'raster-opacity', 1)
         }
       })
     }
