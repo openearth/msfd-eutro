@@ -46,7 +46,6 @@ export default {
       handler: function (parameter) {
         bus.$emit('change-parameter', this.parameter)
         this.updatePaint()
-<<<<<<< HEAD
       },
       deep: true
     },
@@ -62,18 +61,7 @@ export default {
         this.updatePaint()
       },
       deep: true
-    }
-=======
-      },
-      deep: true
     },
-    value: {
-      handler: function (value) {
-        this.updatePaint()
-      },
-      deep: true
-    },
->>>>>>> refs/remotes/origin/master
     // shapelayer: {
     //   handler: function (shapelayer) {
     //     if (shapelayer === true) {
@@ -87,7 +75,6 @@ export default {
   },
   mounted () {
     bus.$on('map-loaded', (event) => {
-      console.log('hoi')
       this.createColorSlider()
       this.createTimeSlider()
       bus.$emit('change-selectPeriod', this.selectPeriod)

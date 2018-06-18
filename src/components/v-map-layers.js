@@ -147,7 +147,7 @@ export default {
     },
 
     makeBoxPlot (filename, lat, lon) {
-      $.ajax({url: 'http://tl-tc102.xtr.deltares.nl:8080/thredds/ncss/grid/Thredds/yearly/' + filename + '.nc?var=P10_chlorophyll&var=P25_chlorophyll&var=P50_chlorophyll&var=P75_chlorophyll&var=P90_chlorophyll&latitude=' + lat + '&longitude=' + lon + '&accept=csv',
+      $.ajax({url: 'http://tl-tc102.xtr.deltares.nl:8080/thredds/ncss/grid/Thredds/' + this.selectPeriod + '/' + filename + '.nc?var=P10_chlorophyll&var=P25_chlorophyll&var=P50_chlorophyll&var=P75_chlorophyll&var=P90_chlorophyll&latitude=' + lat + '&longitude=' + lon + '&accept=csv',
         async: false,
         success: function (result) {
           var string = result.split('\n')
@@ -165,7 +165,7 @@ export default {
             xAxis: {
               categories: ['1'],
               title: {
-                text: 'Year: ' + filename.split('_')[2]
+                text: filename.split('.')[0]
               }
             },
 
