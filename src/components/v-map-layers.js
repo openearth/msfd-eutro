@@ -14,7 +14,7 @@ import $ from 'jquery'
 require('highcharts/highcharts-more.js')(Highcharts)
 Exporting(Highcharts)
 
-const SERVER_URL = 'http://tl-tc102.xtr.deltares.nl:8080/thredds/wms/Thredds/'
+const SERVER_URL = 'tl-tc102.xtr.deltares.nl:8080/thredds/wms/Thredds/'
 const ranges = [2002, 2017]
 const substances = {
   'Original mean': 'mean_chlorophyll',
@@ -36,11 +36,6 @@ export default {
     }
   },
   mounted () {
-    var popup = new mapboxgl.Popup({})
-    var div = window.document.createElement('popup')
-    div.setAttribute('id', 'popup')
-
-    popup.setDOMContent(div)
     bus.$on('change-time-slider', (val) => {
       this.year = val[1]
     })
@@ -65,8 +60,27 @@ export default {
       }
     })
     bus.$on('map-loaded', (map) => {
+      var hoverpopup = new mapboxgl.Popup({})
+
       this.addShapeLayers()
-      this.generateLayers()
+      bus.$emit('shapes-added')
+      this.map.on('mouseenter', 'mwtl-nl-7c3j4z', (e) => {
+        var coordinates = e.features[0].geometry.coordinates.slice()
+        var description = e.features[0].properties.naam
+        hoverpopup.setLngLat(coordinates)
+          .setHTML(description)
+          .addTo(map)
+      })
+
+      this.map.on('mouseleave', 'mwtl-nl-7c3j4z', () => {
+        hoverpopup.remove()
+      })
+
+      var popup = new mapboxgl.Popup({})
+      var div = window.document.createElement('popup')
+      div.setAttribute('id', 'popup')
+
+      popup.setDOMContent(div)
       this.map.on('click', (e) => {
         popup.remove()
         popup.setLngLat(e.lngLat)
@@ -147,7 +161,7 @@ export default {
     },
 
     makeBoxPlot (filename, lat, lon) {
-      $.ajax({url: 'http://tl-tc102.xtr.deltares.nl:8080/thredds/ncss/grid/Thredds/' + this.selectPeriod + '/' + filename + '.nc?var=P10_chlorophyll&var=P25_chlorophyll&var=P50_chlorophyll&var=P75_chlorophyll&var=P90_chlorophyll&latitude=' + lat + '&longitude=' + lon + '&accept=csv',
+      $.ajax({url: 'tl-tc102.xtr.deltares.nl:8080/thredds/ncss/grid/Thredds/' + this.selectPeriod + '/' + filename + '.nc?var=P10_chlorophyll&var=P25_chlorophyll&var=P50_chlorophyll&var=P75_chlorophyll&var=P90_chlorophyll&latitude=' + lat + '&longitude=' + lon + '&accept=csv',
         async: false,
         success: function (result) {
           var string = result.split('\n')

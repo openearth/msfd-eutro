@@ -61,24 +61,16 @@ export default {
         this.updatePaint()
       },
       deep: true
-    },
-    // shapelayer: {
-    //   handler: function (shapelayer) {
-    //     if (shapelayer === true) {
-    //       this.map.setPaintProperty('shapelayer', 'visibility', 'visible')
-    //     } else {
-    //       this.map.setPaintProperty('shapelayer', 'visibility', 'none')
-    //     }
-    //   },
-    //   deep: true
-    // }
+    }
   },
   mounted () {
     bus.$on('map-loaded', (event) => {
-      this.createColorSlider()
-      this.createTimeSlider()
-      bus.$emit('change-selectPeriod', this.selectPeriod)
-      bus.$emit('change-parameter', this.parameter)
+      bus.$on('shapes-added', () =>{
+        this.createColorSlider()
+        this.createTimeSlider()
+        bus.$emit('change-selectPeriod', this.selectPeriod)
+        bus.$emit('change-parameter', this.parameter)
+      })
     })
   },
   methods: {
