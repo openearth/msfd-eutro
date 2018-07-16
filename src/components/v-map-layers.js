@@ -14,7 +14,7 @@ import $ from 'jquery'
 require('highcharts/highcharts-more.js')(Highcharts)
 Exporting(Highcharts)
 
-const SERVER_URL = 'tl-tc102.xtr.deltares.nl:8080/thredds/wms/Thredds/'
+const SERVER_URL = 'https://tl-ng038.xtr.deltares.nl/thredds/wms/Thredds/'
 const ranges = [2002, 2017]
 const substances = {
   'Original mean': 'mean_chlorophyll',
@@ -161,7 +161,7 @@ export default {
     },
 
     makeBoxPlot (filename, lat, lon) {
-      $.ajax({url: 'tl-tc102.xtr.deltares.nl:8080/thredds/ncss/grid/Thredds/' + this.selectPeriod + '/' + filename + '.nc?var=P10_chlorophyll&var=P25_chlorophyll&var=P50_chlorophyll&var=P75_chlorophyll&var=P90_chlorophyll&latitude=' + lat + '&longitude=' + lon + '&accept=csv',
+      $.ajax({url: 'https://tl-ng038.xtr.deltares.nl/thredds/ncss/grid/Thredds/' + this.selectPeriod + '/' + filename + '.nc?var=P10_chlorophyll&var=P25_chlorophyll&var=P50_chlorophyll&var=P75_chlorophyll&var=P90_chlorophyll&latitude=' + lat + '&longitude=' + lon + '&accept=csv',
         async: false,
         success: function (result) {
           var string = result.split('\n')
