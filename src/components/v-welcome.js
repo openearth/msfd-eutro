@@ -3,25 +3,42 @@ import {
 } from '@/event-bus.js'
 
 export default {
+  props: {
+    tutorial: {
+      type: Boolean
+    }
+  },
   data () {
     return {
-      welcome: true,
-      dialog: true
+      disclaimer: true,
+      tutorialDialog: false,
+      tutorialScreen: 'step1'
     }
   },
   watch: {
-    dialog: {
-      handler: function (dialog) {
-        this.dialog = dialog
-        bus.$emit('change-dialog', dialog)
+    tutorial: {
+      handler: function (tutorial) {
+        this.tutorialDialog = tutorial
       },
       deep: true
-    }
-  },
-  methods: {
-    openTutorial () {
-      document.getElementById('welcome').style.display = 'none'
-      document.getElementById('tutorial1').style.display = 'block'
+    },
+    tutorialDialog: {
+      handler: function (tutorialDialog) {
+        this.tutorialDialog = tutorialDialog
+        if (this.tutorialDialog) {
+          this.tutorialScreen = 'step1'
+        }
+        else {
+          bus.$emit('tutorial-closed', this.tutorialDialog)
+        }
+      },
+      deep: true
+    },
+    tutorialScreen: {
+      handler: function (tutorialScreen) {
+        this.tutorialScreen = tutorialScreen
+      },
+      deep: true
     }
   }
 }

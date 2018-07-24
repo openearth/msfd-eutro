@@ -3,10 +3,11 @@
   <v-navigation-drawer width=400 id="navdrawer" app v-model="drawer">
     <v-selection-panel :layers="layers" :map="map"></v-selection-panel>
     <v-info-panel :layers="layers" :map="map"></v-info-panel>
+    <v-acknowledgements :layers="layers" :map="map"></v-acknowledgements>
   </v-navigation-drawer>
   <v-toolbar xs6 color="grey lighten-4" fixed app>
     <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-    <v-toolbar-title>MSFD Eutro - Interactive web-mapping of chlorophyll indicator maps</v-toolbar-title>
+    <v-toolbar-title>MSFD-eutro - Interactive web-mapping of chlorophyll indicator maps</v-toolbar-title>
   </v-toolbar>
   <v-content>
     <div id="map">

@@ -7,21 +7,17 @@ export default {
   name: 'v-info-panel',
   data () {
     return {
-      dialog: true
+      tutorial: false,
+      disclaimer: true
     }
   },
   watch: {
-    dialog: {
-      handler: function (dialog) {
-        this.dialog = dialog
+    tutorial: {
+      handler: function (tutorial) {
+        this.tutorial = tutorial
       },
       deep: true
     }
-  },
-  mounted () {
-    bus.$on('change-dialog', (dialog) => {
-      this.dialog = dialog
-    })
   },
   methods: {
     clickOpenDap () {
@@ -30,5 +26,10 @@ export default {
   },
   components: {
     'v-welcome': VWelcome
+  },
+  mounted() {
+    bus.$on('tutorial-closed', (tutorialDialog) => {
+      this.tutorial = tutorialDialog
+    })
   }
 }

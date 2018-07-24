@@ -3,6 +3,7 @@ import {
 } from '@/event-bus.js'
 import SelectionPanel from './components/VSelectionPanel'
 import InfoPanel from './components/VInfoPanel'
+import Acknowledgements from './components/VAcknowledgements'
 import MapLayers from './components/VMapLayers'
 
 import _ from 'lodash'
@@ -39,6 +40,7 @@ export default {
   components: {
     'v-selection-panel': SelectionPanel,
     'v-map-layers': MapLayers,
-    'v-info-panel': InfoPanel
+    'v-info-panel': InfoPanel,
+    'v-acknowledgements': Acknowledgements
   }
 }
