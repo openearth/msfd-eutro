@@ -87,7 +87,7 @@ export default {
         limit = 1
         range = {
           'min': 2002,
-          'max': 2017
+          'max': 2020
         }
       }
       this.timeslider.updateOptions({
@@ -108,7 +108,7 @@ export default {
         connect: true,
         range: {
           'min': 2002,
-          'max': 2017
+          'max': 2020
         },
         tooltips: [wNumb({ decimals: 0 }), wNumb({ decimals: 0 })]
       })

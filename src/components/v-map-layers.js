@@ -87,7 +87,7 @@ export default {
           .addTo(this.map)
           .setDOMContent(div)
         if (this.selectPeriod === 'yearly') {
-          var filename = 'CHL_1km_' + this.year.toString()
+          var filename = 'CHL_1km_' + parseInt(this.year).toString()
         } else if (this.selectPeriod === 'six_yearly') {
           filename = 'CHL_1km_' + parseInt(this.year).toString() + '_' + (parseInt(this.year) + 5).toString()
         }
@@ -114,7 +114,7 @@ export default {
         var id = parseInt(year).toString()
       } else if (this.selectPeriod === 'six_yearly') {
         filename = 'CHL_1km_' + parseInt(year).toString() + '_' + (parseInt(year) + 5).toString()
-        id = parseInt(year).toString() + '_' + (year + 5)
+        id = parseInt(year).toString() + '_' + (parseInt(year)  + 5)
       }
       if (this.parameter === 'Classified mean' | this.parameter === 'Classified P90') {
         var text = 'custom'

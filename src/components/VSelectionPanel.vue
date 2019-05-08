@@ -68,6 +68,14 @@
   width: 10px !important;
 }
 
+.noUi-horizontal .noUi-handle-upper .noUi-tooltip {
+  left: 20px
+}
+
+.noUi-horizontal .noUi-handle-lower .noUi-tooltip {
+  left: -15px
+}
+
 .c-1-color {
   background: #33cc33;
 }
