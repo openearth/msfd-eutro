@@ -15,7 +15,7 @@ require('highcharts/highcharts-more.js')(Highcharts)
 Exporting(Highcharts)
 
 const SERVER_URL = 'https://tl-ng038.xtr.deltares.nl/thredds/wms/Thredds/'
-const ranges = [2002, 2017]
+const ranges = [2002, 2019]
 const substances = {
   'Original mean': 'mean_chlorophyll',
   'Classified mean': 'mean_chlorophyll',
