@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-dialog v-model="disclaimer" persistent scrollable height="80vh" width="40vw" max-height="80vh" max-width="40vw">
+    <v-dialog v-model="disclaimer" persistent scrollable height="80vh" width="500px" max-height="80vh" max-width="500px">
       <v-card id="disclaimer" light>
         <v-card-title>
           <span class="headline">
@@ -10,7 +10,7 @@
         <v-card-text>
           <iframe id="disclaimerContent" src="./static/disclaimer.html"></iframe>
         </v-card-text>
-        <v-card-actions class="text-xs-center">
+        <v-card-actions class="text-xs-center mx-2">
           <v-btn @click.stop="disclaimer=false" round color="primary" dark>Agree and proceed to website</v-btn>
           <v-btn @click.stop="disclaimer=false; tutorialDialog=true" round color="primary" dark>Agree and tutorial</v-btn>
         </v-card-actions>

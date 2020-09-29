@@ -1,5 +1,6 @@
 <template>
 <v-app id="inspire">
+  <!-- <cookie-law theme="dark-lime" v-on:accept="enableTracking()"></cookie-law> -->
   <v-navigation-drawer width=400 id="navdrawer" app v-model="drawer">
     <v-selection-panel :layers="layers" :map="map"></v-selection-panel>
     <v-info-panel :layers="layers" :map="map"></v-info-panel>
@@ -46,5 +47,9 @@
 
 :after{
   display: none !important;
+}
+
+.mapboxgl-missing-css {
+  display: none;
 }
 </style>

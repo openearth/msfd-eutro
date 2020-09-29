@@ -62,6 +62,8 @@
 #slider-time {
   margin-top: 30px !important;
   margin-bottom: 40px !important;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .noUi-handle {
@@ -69,11 +71,15 @@
 }
 
 .noUi-horizontal .noUi-handle-upper .noUi-tooltip {
-  left: 20px
+  left: 12px
 }
 
 .noUi-horizontal .noUi-handle-lower .noUi-tooltip {
-  left: -15px
+  left: -9px
+}
+
+.noUi-tootltip {
+  padding: 3px;
 }
 
 .c-1-color {
