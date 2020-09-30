@@ -21,7 +21,7 @@
     "eslint-plugin-html": "^4.0.3",
     "file-system": "^2.2.2",
     "gh-pages": "^1.1.0",
-    "highcharts": "^6.1.0",
+    "highcharts": "^7.2.2",
     "jquery": "^3.4.1",
     "jsdap": "^8.1.0",
     "lodash": "^4.17.5",
