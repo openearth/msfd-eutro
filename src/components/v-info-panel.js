@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     clickOpenDap () {
-      window.open('https://tl-ng038.xtr.deltares.nl/thredds/catalog.html', '_blank')
+      window.open('https://msfd.avi.deltares.nl/thredds/catalog.html', '_blank')
     }
   },
   components: {

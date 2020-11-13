@@ -149,7 +149,7 @@ rgb(60, 4, 4));
   margin: 10%;
   text-align: justify;
   height: 200px;
-  background: url('https://tl-ng038.xtr.deltares.nl/thredds/wms/Thredds/yearly/CHL_1km_2017.nc?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=mean_chlorophyll&WIDTH=20&HEIGHT=200&LOGSCALE=true&COLORSCALERANGE=0,80&COLORBARONLY=true&TRANSPARENT=TRUE') 0 0 repeat;
+  background: url('https://msfd.avi.deltares.nl/thredds/wms/Thredds/yearly/CHL_1km_2017.nc?SERVICE=WMS&REQUEST=GetLegendGraphic&LAYER=mean_chlorophyll&WIDTH=20&HEIGHT=200&LOGSCALE=true&COLORSCALERANGE=0,80&COLORBARONLY=true&TRANSPARENT=TRUE') 0 0 repeat;
   transform: rotate(90deg);
 } */
 
